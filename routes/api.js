@@ -20,4 +20,8 @@ router.post("/new", express.json(), (req, res)=>{ //GRAVAR NOVO POST. O middlewa
     res.send("Post Adicionado");
 })
 
+/* router.delete("/all", (req, res)=>{
+    req.
+}) */
+
 module.exports = router;

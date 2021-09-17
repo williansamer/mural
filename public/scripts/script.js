@@ -18,7 +18,8 @@ function updatePosts(){
             posts.forEach((post)=>{
                 let postElement = `<div class="card mb-4">
                                         <div id="${post.id}" class="card-header">
-                                            <h5 class="card-title">${post.title}</h5>
+                                            <h5 class="d-inline card-title">${post.title}</h5>
+                                            <button class="mx-2" onclick="delPost(this)">Deletar</button>
                                         </div>
                                         <div class="card-body">
                                             <div class="card-text">${post.description}</div>
@@ -52,4 +53,29 @@ function newPost(){
             document.querySelector("#title").value = ''; //Temos que limpar os inputs
             document.querySelector("#desc").value = ''; //Temos que limpar os inputs
         })
+}
+
+function delPost(el){
+
+    let thisId = el.parentElement.id;
+    let parsed = '';
+    let noDeleted;
+
+    fetch("http://192.168.1.103:3000/api/all")
+        .then((res)=>{
+            return res.json();
+        }).then((json)=>{
+            let posts = JSON.parse(json);
+            parsed.push(posts);
+
+            posts.forEach((post)=>{
+                let deletedTrue = thisId !==post.id;
+                if(deletedTrue){
+                    noDeleted.push(post);
+                }
+            })
+        })
+
+        console.log(noDeleted);
+        console.log(parsed)
 }

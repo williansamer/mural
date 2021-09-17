@@ -5,8 +5,11 @@ module.exports = { //exportando todo obj e outros objetos que tem dentro dele
     getAll(){return this.posts}, //método 'getAll', retornando o 'this.posts' para LEITURA do usuário
 
     newPost (title, description){ // método 'newPost' para GRAVAR no 'posts'
-        this.posts.push({id: generateId(), title, description}); //Enviando para o 'posts' um objeto com id, title e description
-    } 
+        this.posts.push({id: generateId(), title, description}) //Enviando para o 'posts' um objeto com id, title e description
+    },
+    delPost (id){
+        
+    }
 
 }
 
