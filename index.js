@@ -5,7 +5,7 @@ const path = require("path")
 const PORT = 3000;
 const route = require("./routes/api") // importando
 
-app.use("/api", route); //Aqui estamos rodando um middleware(rotas) para aplicar o GET e o POST(que estão neste 'routes', dentro do path(caminho) '/api')
+app.use("/api", route); //Aqui estamos rodando um middleware(route) para aplicar o GET, POST e DELETE(que estão neste 'routes', dentro do path(caminho) '/api')
 app.use(express.static(path.join(__dirname, "public"))); //Criando um HTML estático e juntando o caminho do diretório("__dirname") com o diretório("public"). Ou seja, dentro deste diretório, irá procurar e abrir o arquivo com nome padrão que é 'index.html'
 
 app.listen(PORT, ()=>{
