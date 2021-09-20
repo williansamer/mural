@@ -20,8 +20,10 @@ router.post("/new", express.json(), (req, res)=>{ //GRAVAR NOVO POST. O middlewa
     res.send("Post Adicionado");
 })
 
-/* router.delete("/all", (req, res)=>{
-    req.
-}) */
+router.delete("/del", express.json(), (req, res)=>{ //PRESTAR ATENÇÃO PARA COLOCAR "express.json()" QUANDO RECEBER UM OBJ JSON
+    let id = req.body.id;
+    posts.delPost(id);
+    res.send("Post Deletado");
+})
 
 module.exports = router;

@@ -48,7 +48,6 @@ function newPost(){
 
     fetch("http://192.168.1.103:3000/api/new", options) //Chamando a 'url' e criando o 'options' para gravar no BACKEND
         .then((res)=>{ //Teoricamente, não há uma obrigatoriedade de ter este then, pois o 'options' já permitiu a gravação no BACKEND. Mas para aparecer de fato no FRONT, temos que fazer alguns ajuste no 'then'
-            console.log(res);
             updatePosts(); //Temos que chamar a função 'updatePosts()' para atualizar a tela.
             document.querySelector("#title").value = ''; //Temos que limpar os inputs
             document.querySelector("#desc").value = ''; //Temos que limpar os inputs
@@ -57,25 +56,16 @@ function newPost(){
 
 function delPost(el){
 
-    let thisId = el.parentElement.id;
-    let parsed = '';
-    let noDeleted;
+    let id = el.parentElement.id;
+    id = {id};
 
-    fetch("http://192.168.1.103:3000/api/all")
-        .then((res)=>{
-            return res.json();
-        }).then((json)=>{
-            let posts = JSON.parse(json);
-            parsed.push(posts);
+    let options = {method: "DELETE",
+                    headers: new Headers({"content-type": "application/json"}),
+                    body: JSON.stringify(id)};
 
-            posts.forEach((post)=>{
-                let deletedTrue = thisId !==post.id;
-                if(deletedTrue){
-                    noDeleted.push(post);
-                }
-            })
+    fetch("http://192.168.1.103:3000/api/del", options)
+        .then(()=>{ 
+            updatePosts();
         })
 
-        console.log(noDeleted);
-        console.log(parsed)
 }

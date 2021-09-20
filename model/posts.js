@@ -8,7 +8,18 @@ module.exports = { //exportando todo obj e outros objetos que tem dentro dele
         this.posts.push({id: generateId(), title, description}) //Enviando para o 'posts' um objeto com id, title e description
     },
     delPost (id){
-        
+        let updatePosts = [];
+        let postsMap = this.posts.map((post)=>{return post});
+
+        postsMap.forEach((post)=>{
+            if(post.id !== id){
+                updatePosts.push(post)
+            }
+        })
+
+        this.posts = updatePosts;
+        //console.log(updatePosts);
+
     }
 
 }
