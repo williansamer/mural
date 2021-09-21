@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path")
 
-const PORT = 3000;
+//const PORT = 3000;
 const route = require("./routes/api") // importando
 
 app.use("/api", route); //Aqui estamos rodando um middleware(route) para aplicar o GET, POST e DELETE(que estão neste 'routes', dentro do path(caminho) '/api')
