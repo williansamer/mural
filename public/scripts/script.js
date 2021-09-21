@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 function updatePosts(){
 
-    fetch("http://192.168.1.103:3000/api/all")
+    fetch("http://localhost:3000/api/all")
         .then((res)=>{
             //console.log(res) //body: ReadableStream - Temos que retornar uma promisse 'json'
             return res.json(); //Retornando em 'json'. Com isso, ele retorna uma nova promisse. Outra promisse quer dizer que tem que ter outro 'then'.
@@ -47,7 +47,7 @@ function newPost(){
                     body: JSON.stringify(post)}; //Transformando em 'JSON' para conseguir GRAVAR de fato no 'posts'.
                     //Estes dados do body é o equivalente de: lá no insomnia estar criando(diretamente) um arquivo JSON para GRAVAR.
 
-    fetch("http://192.168.1.103:3000/api/new", options) //Chamando a 'url' e criando o 'options' para gravar no BACKEND
+    fetch("http://localhost:3000/api/new", options) //Chamando a 'url' e criando o 'options' para gravar no BACKEND
         .then(()=>{ //Teoricamente, não há uma obrigatoriedade de ter este then, pois o 'options' já permitiu a gravação no BACKEND. Mas para aparecer de fato no FRONT, temos que fazer alguns ajuste no 'then'
             updatePosts(); //Temos que chamar a função 'updatePosts()' para atualizar a tela.
             document.querySelector("#title").value = ''; //Temos que limpar os inputs
@@ -64,7 +64,7 @@ function delPost(el){
                     headers: new Headers({"content-type": "application/json"}),
                     body: JSON.stringify(id)};
 
-    fetch("http://192.168.1.103:3000/api/del", options)
+    fetch("http://localhost:3000/api/del", options)
         .then(()=>{ 
             updatePosts();
         })
