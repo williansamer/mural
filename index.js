@@ -1,3 +1,11 @@
+//VARIÁVEIS DE AMBIENTE >>> Valores diferentes dependendo de está no ambiente de desenvolvimento ou de produção
+//process.env(do pacote 'dotenv') é um tipo de variável de ambiente
+//outro tipo de variável de ambiente é:
+//          no script do pacote, colocar '"dev_start": "PORT=3000 node index" e na hora de rodar o servidor colocar "npm run dev_start"'
+//OBS: O Arquivo '.env' é válido somente no ambiente de DESENVOLVIMENTO. Não há necessidade de subir para o ambiente de PRODUÇÃO.
+//OBS2: Variáveis de ambiente em PRODUÇÃO, é criado no próprio servidor de hospedagem. Geralmente copia e cola os dados que estão na '.env'(desenvolvimento) para produção.
+
+
 const express = require("express");
 const app = express();
 const path = require("path")

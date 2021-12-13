@@ -1,5 +1,7 @@
 Criando um Mural de Avisos (Front e Back)
 
+![mural](mural.png)
+
 O intuito do projeto é aplicar os conhecimentos sobre API REST. 
 
 >>> tecnologias usadas
